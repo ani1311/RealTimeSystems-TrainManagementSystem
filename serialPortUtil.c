@@ -1,10 +1,3 @@
-char *com_port = "";
-uint32_t baud_rate = 9600;
-
-HANDLE connection;
-
-void setup() { connection = open_serial_port(com_port, baud_rate); }
-
 void print_error(const char *context) {
   DWORD error_code = GetLastError();
   char buffer[256];
