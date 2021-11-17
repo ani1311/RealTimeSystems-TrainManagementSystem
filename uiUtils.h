@@ -1,3 +1,6 @@
+#ifndef UIUTIL_H_INCLUDED
+#define UIUTIL_H_INCLUDED
+
 #include<stdio.h>
 
 #define RING_BELL 1
@@ -11,3 +14,5 @@
 
 void printMenu();
 int printMenuAndTakeNextInput();
+
+#endif

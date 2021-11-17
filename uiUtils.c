@@ -1,4 +1,3 @@
-
 #include "uiUtils.h"
 
 void printMenu() {

@@ -6,7 +6,7 @@ all:
 	make clean
 
 build:
-	g++ main.c uiUtils.c trainUtil.c serialPortUtil.c -o a
+	g++ main.c trainUtil.c uiUtils.c serialPortUtil.c -o a
 
 run:
 	./a

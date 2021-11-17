@@ -1,9 +1,13 @@
-char *com_port = "";
+#include "trainUtil.h"
+
+char com_port[] = "";
 uint32_t baud_rate = 9600;
 
 HANDLE connection;
 
-void setup() { connection = open_serial_port(com_port, baud_rate); }
+void setup() { 
+    connection = open_serial_port(com_port, baud_rate); 
+}
 
 
 void handleInput(int input) {
@@ -12,7 +16,7 @@ void handleInput(int input) {
             ringBell();
         case START_TRAIN:
             startTrain();
-        case ACCLERATE_TRAIN():
+        case ACCLERATE_TRAIN:
             acclerateTrain();
         case MOVE_TRAIN:
             moveTrain();
@@ -20,16 +24,16 @@ void handleInput(int input) {
             decelerateTrain();
         case STOP_TRAIN:
             stopTrain();
-        case SEND_BYTE():
+        case SEND_BYTE:
             readAndSendByte();
     }
 }
 
-void ringbell() {}
+void ringBell() {}
 void startTrain() {}
-void accleratetrain() {}
-void movetrain() {}
-void deceleratetrain() {}
-void stoptrain() {}
-void readandsendbyte() {}
+void acclerateTrain() {}
+void moveTrain() {}
+void decelerateTrain() {}
+void stopTrain() {}
+void readAndSendByte() {}
 

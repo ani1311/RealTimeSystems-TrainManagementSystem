@@ -1,13 +1,18 @@
-#include "uiUtils.h"
+#ifndef TRAINUTIL_H_INCLUDED
+#define TRAINUTIL_H_INCLUDED
+
 #include "serialPortUtil.h"
+#include "uiUtils.h"
 
 void setup();
 
-void ringbell();
+void ringBell();
 void startTrain();
-void accleratetrain();
-void movetrain();
-void deceleratetrain();
-void stoptrain();
-void readandsendbyte();
+void acclerateTrain();
+void moveTrain();
+void decelerateTrain();
+void stopTrain();
+void readAndSendByte();
+
+#endif
 
