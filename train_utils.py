@@ -22,10 +22,15 @@ def printMenu():
 
 def displayMenuAndTakeInput():
     printMenu()
-    ip = int(input())
+    ip = 0 
     while(ip < 1 or ip > 7):
-        print("Wrong input: {0}, try again".format(ip))
-        ip = int(input())
+        try:
+            ip = int(input())
+            if(ip >= 1 and ip <= 7):
+                break;
+            print("Wrong input: {0}, try again".format(ip))
+        except:
+            print("Input not a number")
     return ip
 
 def handleInput(input):
