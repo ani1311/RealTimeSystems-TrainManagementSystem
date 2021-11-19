@@ -2,6 +2,14 @@ import serial_utils
 
 NO_OF_INPUTS = 8
 
+COM_PORT = "COM1"
+BAUD_RATE = 9600
+
+FIRST_BYTE_OF_COMMAND = "11111110"
+ENGINE_ID = "000010111"
+
+connection = serial_utils.getConnection(COM_PORT,BAUD_RATE)
+
 def printMenu():
     print("Train Management System Options:");
     print("1) Ring bell");
@@ -35,26 +43,39 @@ def handleInput(input):
         case 6:
             stopTrain()
 
-def sendTrainCommand(connection,bytes):
-    bytes = bytearray.fromhex('fe') + bytes
-    
-
+def sendTrainCommand(data):
+    hexData = serial_utils.bitstring_to_bytes(FIRST_BYTE_OF_COMMAND + ENGINE_ID + data)
+    connection.write(hexData)
 
 def ringBell():
-    print("Ring bell")
+    COMMAND = "00"
+    DATA = "11101"
+    sendTrainCommand(COMMAND + DATA)
 
+## set Absolute speed to 8
 def startTrain():
-    print("start Train")
-    
+    COMMAND = "11"
+    DATA = "01000"
+    sendTrainCommand(COMMAND + DATA)
+
+## Increase relaitive speed by 3 
 def acclerateTrain():
-    print("acclerate Train")
+    COMMAND = "10"
+    DATA = "01000"
+    sendTrainCommand(COMMAND + DATA)
 
+## Same as start
 def moveTrain():
-    print("move train")
+    startTrain()
  
+## Decrease relaitive speed by 3 
 def decelerateTrain():
-    print("decelerate Train")
+    COMMAND = "10"
+    DATA = "00010"
+    sendTrainCommand(COMMAND + DATA)
 
+## Set absolute speed to 0
 def stopTrain():
-    print("stop Train")
-
+    COMMAND = "11"
+    DATA = "00000"
+    sendTrainCommand(COMMAND + DATA)
